@@ -1,0 +1,11 @@
+{
+  "name": "simple-rest-api",
+  "version": "1.0.0",
+  "description": "N/A",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mahmoudhabib.eng@gmail.com",
+  "license": "ISC"
+}
