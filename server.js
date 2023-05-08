@@ -1,10 +1,27 @@
 const http = require('http');
+const fs = require('fs');
 
-//* Route Parameter like https://www.google.com/home/programming/java ==> programming/java
-//* are the Route Parameters.
-//* Query String is After (?) like https://www.google.com?name=ali&age=10 ==> name = ali , age = 10 
-//* are the query parameters.
+//* in nodejs we can not use static files directly like css files , assets files ,etc ....
 
+const html = fs.readFileSync('./public/index.html', 'utf-8');
 const server = http.createServer((req, res) => {
-    console.log('Server is starting at port 7800 ....');
+
+    switch (req.url) {
+        case '/home':
+           // res.setHeader('Content-Type' ,'application/json');
+           res.setHeader('Content-Type', 'text/html');
+            res.end(html.replace("{{%page%}}", "Home"),);
+            break;
+        case '/about':
+            //res.setHeader('Content-Type' ,'application/json');
+            res.setHeader('Content-Type', 'text/html');
+            res.end(html.replace("{{%page%}}", "About"));
+            break;
+        case '/contact':
+           // res.setHeader('Content-Type' ,'application/json');
+           res.setHeader('Content-Type', 'text/html');
+            res.end(html.replace("{{%page%}}", "Contact"));
+            break;
+    }
+
 }).listen(7800);
